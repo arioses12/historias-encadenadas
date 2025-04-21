@@ -1,1 +1,99 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Historias Encadenadas Digitales</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #4a90e2;
+    }
+    .subtitle {
+      text-align: center;
+      font-weight: bold;
+      margin-top: -10px;
+      color: #333;
+    }
+    .story {
+      margin-top: 20px;
+      padding: 15px;
+      background: #e0f7fa;
+      border-radius: 5px;
+      min-height: 100px;
+    }
+    .input-area {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    textarea {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+    button {
+      padding: 10px;
+      background-color: #4a90e2;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #357ab8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Historias Encadenadas Digitales</h1>
+    <p class="subtitle">Facilitado por Ariadna y Cynthia – La escritura, la tecnología y el juego</p>
+    <div class="story" id="storyDisplay">
+      <strong>BIENVENIDAS al juego de escritura colaborativa</strong><br><br>
+      <em>Comienza tu historia escribiendo la primera oración...</em>
+    </div>
+    <div class="input-area">
+      <textarea id="sentenceInput" rows="3" placeholder="Escribe tu oración aquí..."></textarea>
+      <button onclick="addSentence()">Agregar a la historia</button>
+    </div>
+  </div>
+
+  <script>
+    let story = [];
+
+    function addSentence() {
+      const input = document.getElementById("sentenceInput");
+      const sentence = input.value.trim();
+      if (sentence !== "") {
+        story.push(sentence);
+        document.getElementById("storyDisplay").innerHTML = 
+          '<strong>BIENVENIDAS al juego de escritura colaborativa</strong><br><br>' +
+          story.map((s, i) => `${i + 1}. ${s}`).join('<br>');
+        input.value = "";
+        input.focus();
+      }
+    }
+  </script>
+</body>
+</html>
+    
